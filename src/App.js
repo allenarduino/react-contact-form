@@ -1,6 +1,7 @@
+import FormPage from './pages/FormPage';
 
-const App=() =>{
-  return (<h1 style={{textAlign:"center"}}>React Contact Form</h1>)
-}
- 
+const App = () => {
+  return <FormPage />;
+};
+
 export default App;
