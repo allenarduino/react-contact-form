@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import DetailsBar from '../components/DetailsBar';
 
 const PageWrapper = styled.div`
   display: flex;
@@ -7,19 +8,21 @@ const PageWrapper = styled.div`
   min-height: 100vh;
   align-items: center;
   background-color: whitesmoke;
+  padding-bottom: 50px;
 `;
 
 const PageHeadingWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 40px;
 `;
 
 const FormContainer = styled.div`
   width: 70%;
   background-color: #fff;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
+  height: 70vh;
   @media (max-width: 768px) {
     width: 90%;
   }
@@ -44,7 +47,9 @@ const FormPage = () => {
         <TextOne>Contact US</TextOne>
         <TextTwo>Any Question or remarks? Just write us a message</TextTwo>
       </PageHeadingWrapper>
-      <FormContainer></FormContainer>
+      <FormContainer>
+        <DetailsBar />
+      </FormContainer>
     </PageWrapper>
   );
 };
