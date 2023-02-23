@@ -93,7 +93,7 @@ const InputSide = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonLoading(true);
-    const response = await fetch('https://formspree.io/f/mnqyprvo', {
+    const response = await fetch('https://formspree.io/f/<your-form-id>', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ const InputSide = () => {
     });
 
     if (response.ok) {
-      history.push('/success');
+      history.go('/success');
       setButtonLoading(false);
     } else {
       setButtonLoading(false);
