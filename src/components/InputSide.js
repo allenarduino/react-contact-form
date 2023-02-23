@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const InputSideWrapper = styled.div`
+const InputSideWrapper = styled.form`
   height: auto;
   padding-bottom: 100px;
   position: relative;
@@ -53,26 +53,89 @@ const SubMitButton = styled.input`
   cursor: pointer;
 `;
 
+const LoadingButton = styled.button`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: rgb(8, 8, 63);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px 12px 24px;
+  cursor: pointer;
+`;
+
 const InputSide = () => {
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [buttonLoading, setButtonLoading] = React.useState(false);
+
+  const nameHandler = (e) => {
+    setName(e.target.value);
+  };
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const phoneHandler = (e) => {
+    setPhone(e.target.value);
+  };
+  const messageHandler = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setButtonLoading(true);
+    const response = await fetch('https://formspree.io/f/<your-form-id>', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, phone, message }),
+    });
+
+    if (response.ok) {
+      setButtonLoading(false);
+      alert('Form Submitted');
+    } else {
+      setButtonLoading(false);
+      alert('Failed to submit form');
+    }
+  };
+
   return (
-    <InputSideWrapper>
+    <InputSideWrapper onSubmit={handleSubmit}>
       <InputWrapper>
         <p>Name</p>
-        <Input type="text" placeholder="Allen Jones" />
+        <Input type="text" placeholder="Allen Jones" value={name} onChange={nameHandler} />
       </InputWrapper>
       <InputWrapper>
         <p>Email</p>
-        <Input type="email" placeholder="aljay126@gmail.com" />
+        <Input
+          type="email"
+          placeholder="aljay126@gmail.com"
+          value={email}
+          onChange={emailHandler}
+        />
       </InputWrapper>
       <InputWrapper>
         <p>Phone</p>
-        <Input type="number" placeholder="+233546227893" />
+        <Input type="tel" placeholder="+233546227893" value={phone} onChange={phoneHandler} />
       </InputWrapper>
       <InputWrapper>
         <p>Message</p>
-        <MessageInput placeholder="Write your message" />
+        <MessageInput placeholder="Write your message" value={message} onChange={messageHandler} />
       </InputWrapper>
-      <SubMitButton type="submit" value="Send Message" />
+      {buttonLoading ? (
+        <LoadingButton type="submit" value="Loading...." />
+      ) : (
+        <SubMitButton type="submit" value="Send Message" />
+      )}
     </InputSideWrapper>
   );
 };

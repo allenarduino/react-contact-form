@@ -11,8 +11,9 @@ const DetailsBarWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   height: auto;
+  padding-bottom: 100px;
   @media (max-width: 768px) {
-    padding-bottom: 70px;
+    padding-bottom: 80px;
     grid-row: 2;
   }
 `;
