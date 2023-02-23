@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 const InputSideWrapper = styled.form`
   height: auto;
   padding-bottom: 100px;
@@ -89,7 +88,7 @@ const InputSide = () => {
     setMessage(e.target.value);
   };
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonLoading(true);
@@ -102,10 +101,9 @@ const InputSide = () => {
     });
 
     if (response.ok) {
-      history.go('/success');
+      navigate('/success');
       setButtonLoading(false);
     } else {
-      setButtonLoading(false);
       alert('Failed to submit form');
     }
   };
