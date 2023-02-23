@@ -8,6 +8,11 @@ A fully functional contact form with React and formspree API
 - React
 - Styled Components
 
+### Link to Published Article:
+
+[Link](https://dev.to/allenarduino/creating-a-fully-functional-contact-form-with-react-and-formspree-api-2ecp)
+
+
 ### Screenshots
 <img
 width="500"
