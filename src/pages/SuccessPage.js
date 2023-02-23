@@ -14,6 +14,7 @@ const MessageWrapper = styled.div`
 const SuccessMessage = styled.h2`
   font-size: 25px;
   color: rgb(8, 8, 63);
+  text-align: center;
   @media (max-width: 768px) {
     font-size: 18px;
   }
@@ -25,7 +26,7 @@ const SuccessPage = () => {
       <Fade bottom duration={700} distance="60px">
         <MessageWrapper>
           <Icon.CheckCircle color="rgb(8, 8, 63)" style={{ width: 50, height: 50 }} />
-          <SuccessMessage className="sucess-message">RESERVATION MADE SUCCESSFULLY</SuccessMessage>
+          <SuccessMessage className="sucess-message">MESSAGE SENT SUCCESSFULLY</SuccessMessage>
         </MessageWrapper>
       </Fade>
     </React.Fragment>

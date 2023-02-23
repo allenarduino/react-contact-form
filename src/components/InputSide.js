@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const InputSideWrapper = styled.form`
   height: auto;
@@ -88,10 +89,11 @@ const InputSide = () => {
     setMessage(e.target.value);
   };
 
+  const history = useHistory();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonLoading(true);
-    const response = await fetch('https://formspree.io/f/<your-form-id>', {
+    const response = await fetch('https://formspree.io/f/mnqyprvo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -100,8 +102,8 @@ const InputSide = () => {
     });
 
     if (response.ok) {
+      history.push('/success');
       setButtonLoading(false);
-      alert('Form Submitted');
     } else {
       setButtonLoading(false);
       alert('Failed to submit form');
@@ -112,7 +114,7 @@ const InputSide = () => {
     <InputSideWrapper onSubmit={handleSubmit}>
       <InputWrapper>
         <p>Name</p>
-        <Input type="text" placeholder="Allen Jones" value={name} onChange={nameHandler} />
+        <Input type="text" required placeholder="Allen Jones" value={name} onChange={nameHandler} />
       </InputWrapper>
       <InputWrapper>
         <p>Email</p>
@@ -121,18 +123,30 @@ const InputSide = () => {
           placeholder="aljay126@gmail.com"
           value={email}
           onChange={emailHandler}
+          required
         />
       </InputWrapper>
       <InputWrapper>
         <p>Phone</p>
-        <Input type="tel" placeholder="+233546227893" value={phone} onChange={phoneHandler} />
+        <Input
+          type="tel"
+          required
+          placeholder="+233546227893"
+          value={phone}
+          onChange={phoneHandler}
+        />
       </InputWrapper>
       <InputWrapper>
         <p>Message</p>
-        <MessageInput placeholder="Write your message" value={message} onChange={messageHandler} />
+        <MessageInput
+          required
+          placeholder="Write your message"
+          value={message}
+          onChange={messageHandler}
+        />
       </InputWrapper>
       {buttonLoading ? (
-        <LoadingButton type="submit" value="Loading...." />
+        <LoadingButton>Loading...</LoadingButton>
       ) : (
         <SubMitButton type="submit" value="Send Message" />
       )}
