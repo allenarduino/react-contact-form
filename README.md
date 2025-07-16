@@ -10,7 +10,7 @@ A fully functional contact form with React and formspree API
 
 ### Link to Published Article:
 
-[Link](https://dev.to/allenarduino/creating-a-fully-functional-contact-form-with-react-and-formspree-api-2ecp)
+[Creating a fully functional contact form with react and formspree](https://dev.to/allenarduino/creating-a-fully-functional-contact-form-with-react-and-formspree-api-2ecp)
 
 
 ### Screenshots
